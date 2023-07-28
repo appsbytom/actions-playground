@@ -9,3 +9,13 @@ jobs:
       - name: Hello world
         run: |
           echo "Hello world"
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello"
+  finish:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [hello-world, hello]
+    steps: 
+      - run: echo "Finish"
